@@ -1,5 +1,8 @@
-import React from 'react'
+import React from 'react';
+import Grid from './Grid';
 
-export default ({ name }) => (
-  <div>Hello {name}!</div>
+export default ({ data }) => (
+  <div>
+    <Grid data={data} />
+  </div>
 );
