@@ -10,6 +10,13 @@ const nodeModules = resolve(__dirname, 'node_modules');
 module.exports = () => {
   return {
     devtool: 'inline-source-map',
+    resolve: {
+      extensions: ['.js', '.jsx', '.json'],
+      modules: [
+        srcDir,
+        nodeModules,
+      ],
+    },
     entry: [
       resolve(srcDir, 'index.js')
     ],
