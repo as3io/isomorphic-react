@@ -2,11 +2,16 @@
   "name": "isomorphic-react",
   "version": "0.1.0",
   "description": "An example Isomorphic/SSR React app with react-router and apollo-client/graphql",
-  "main": "src/index.js",
+  "main": "server.js",
   "author": "Jacob Bare <jacob@limit0.io>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "start": "webpack --mode=development -w & nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
