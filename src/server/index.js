@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import serialize from 'serialize-javascript';
 import App from '../shared/App';
 
 const app = express();
@@ -9,7 +10,10 @@ app.use(cors());
 app.use(express.static('public'));
 
 app.get('*', (req, res) => {
-  const html = renderToString(<App />);
+  const props = {
+    name: 'Jacob',
+  };
+  const html = renderToString(<App {...props} />);
 
   res.send(`
     <!DOCTYPE html>
@@ -19,6 +23,7 @@ app.get('*', (req, res) => {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Isomorphic React App</title>
         <script src="/bundle.js" defer></script>
+        <script>window.__INITIAL_DATA__ = ${serialize(props)}</script>
       </head>
 
       <body>

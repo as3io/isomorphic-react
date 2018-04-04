@@ -85,7 +85,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _cors = __webpack_require__(/*! cors */ \"cors\");\n\nvar _cors2 = _interopRequireDefault(_cors);\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _App = __webpack_require__(/*! ../shared/App */ \"./src/shared/App.jsx\");\n\nvar _App2 = _interopRequireDefault(_App);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\napp.use((0, _cors2.default)());\napp.use(_express2.default.static('public'));\n\napp.get('*', function (req, res) {\n  var html = (0, _server.renderToString)(_react2.default.createElement(_App2.default, null));\n\n  res.send('\\n    <!DOCTYPE html>\\n    <html lang=\"en\" dir=\"ltr\">\\n      <head>\\n        <meta charset=\"utf-8\">\\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\\n        <title>Isomorphic React App</title>\\n        <script src=\"/bundle.js\" defer></script>\\n      </head>\\n\\n      <body>\\n        <div id=\"app\">' + html + '</div>\\n      </body>\\n    </html>\\n  ');\n});\n\nvar port = process.env.PORT || 3028;\napp.listen(port, function () {\n  process.stdout.write('Server listening on port ' + port + '.\\n');\n});\n\n//# sourceURL=webpack:///./src/server/index.js?");
+eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _cors = __webpack_require__(/*! cors */ \"cors\");\n\nvar _cors2 = _interopRequireDefault(_cors);\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _serializeJavascript = __webpack_require__(/*! serialize-javascript */ \"serialize-javascript\");\n\nvar _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);\n\nvar _App = __webpack_require__(/*! ../shared/App */ \"./src/shared/App.jsx\");\n\nvar _App2 = _interopRequireDefault(_App);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\napp.use((0, _cors2.default)());\napp.use(_express2.default.static('public'));\n\napp.get('*', function (req, res) {\n  var props = {\n    name: 'Jacob'\n  };\n  var html = (0, _server.renderToString)(_react2.default.createElement(_App2.default, props));\n\n  res.send('\\n    <!DOCTYPE html>\\n    <html lang=\"en\" dir=\"ltr\">\\n      <head>\\n        <meta charset=\"utf-8\">\\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\\n        <title>Isomorphic React App</title>\\n        <script src=\"/bundle.js\" defer></script>\\n        <script>window.__INITIAL_DATA__ = ' + (0, _serializeJavascript2.default)(props) + '</script>\\n      </head>\\n\\n      <body>\\n        <div id=\"app\">' + html + '</div>\\n      </body>\\n    </html>\\n  ');\n});\n\nvar port = process.env.PORT || 3028;\napp.listen(port, function () {\n  process.stdout.write('Server listening on port ' + port + '.\\n');\n});\n\n//# sourceURL=webpack:///./src/server/index.js?");
 
 /***/ }),
 
@@ -97,7 +97,7 @@ eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function () {\n  return _react2.default.createElement(\n    'div',\n    null,\n    'Hello World!'\n  );\n};\n\n//# sourceURL=webpack:///./src/shared/App.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = function (_ref) {\n  var name = _ref.name;\n  return _react2.default.createElement(\n    'div',\n    null,\n    'Hello ',\n    name,\n    '!'\n  );\n};\n\n//# sourceURL=webpack:///./src/shared/App.jsx?");
 
 /***/ }),
 
@@ -142,6 +142,17 @@ eval("module.exports = require(\"react\");\n\n//# sourceURL=webpack:///external_
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"react-dom/server\");\n\n//# sourceURL=webpack:///external_%22react-dom/server%22?");
+
+/***/ }),
+
+/***/ "serialize-javascript":
+/*!***************************************!*\
+  !*** external "serialize-javascript" ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"serialize-javascript\");\n\n//# sourceURL=webpack:///external_%22serialize-javascript%22?");
 
 /***/ })
 
