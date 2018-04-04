@@ -1,42 +1,51 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
+const nodeExternals = require('webpack-node-externals')
 
-const { resolve } = path;
+const browserConfig = {
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
+  entry: './src/browser/index.js',
+  output: {
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
+  module: {
+    rules: [
+      { test: /\.jsx?$/, use: 'babel-loader' },
+    ]
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      __isBrowser__: "true"
+    })
+  ]
+}
 
-const srcDir = resolve(__dirname, 'src');
-const buildDir = resolve(__dirname, 'dist');
-const nodeModules = resolve(__dirname, 'node_modules');
+const serverConfig = {
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
+  entry: './src/server/index.js',
+  target: 'node',
+  externals: [nodeExternals()],
+  output: {
+    path: __dirname,
+    filename: 'server.js',
+    publicPath: '/'
+  },
+  module: {
+    rules: [
+      { test: /\.jsx?$/, use: 'babel-loader' }
+    ]
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      __isBrowser__: "false"
+    })
+  ]
+}
 
-module.exports = () => {
-  return {
-    devtool: 'inline-source-map',
-    resolve: {
-      extensions: ['.js', '.jsx', '.json'],
-      modules: [
-        srcDir,
-        nodeModules,
-      ],
-    },
-    entry: [
-      resolve(srcDir, 'index.js')
-    ],
-    output: {
-      path: buildDir,
-      filename: 'app.[hash].js',
-    },
-    module: {
-      rules: [
-        {
-          test: /\.jsx?$/,
-          include: [ srcDir ],
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['env', 'react'],
-            },
-          },
-        },
-      ],
-    },
-  };
-};
+module.exports = [browserConfig, serverConfig]
