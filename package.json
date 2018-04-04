@@ -1,0 +1,9 @@
+{
+  "name": "isomorphic-react",
+  "version": "0.1.0",
+  "description": "An example Isomorphic/SSR React app with react-router and apollo-client/graphql",
+  "main": "src/index.js",
+  "author": "Jacob Bare <jacob@limit0.io>",
+  "license": "MIT",
+  "private": true
+}
