@@ -62,5 +62,6 @@ typings/
 
 .DS_Store
 
-# Ignore build directory
-dist
+# Ignore build files
+public/*.js
+server.js
