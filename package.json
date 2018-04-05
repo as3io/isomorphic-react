@@ -4,6 +4,10 @@
   "description": "An example Isomorphic/SSR React app with react-router and apollo-client/graphql",
   "main": "server.js",
   "author": "Jacob Bare <jacob@limit0.io>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/as3io/isomorphic-react"
+  },
   "license": "MIT",
   "private": true,
   "scripts": {
